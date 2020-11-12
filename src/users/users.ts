@@ -1,5 +1,6 @@
 import { authorization } from '../common';
-import { Context, DateTimeColumn, EntityClass, IdEntity, ServerFunction, StringColumn, UserInfo } from "@remult/core";
+import { BoolColumn, Context, DateTimeColumn, EntityClass, IdEntity, ServerFunction, StringColumn, UserInfo } from "@remult/core";
+import { Roles } from './roles';
 
 @EntityClass
 export class Users extends IdEntity {
@@ -10,6 +11,7 @@ export class Users extends IdEntity {
         }
     });
     createdDate = new DateTimeColumn();
+    isAdmin = new BoolColumn();
     constructor() {
         super({
             name: 'users',
@@ -17,7 +19,7 @@ export class Users extends IdEntity {
                 if (this.isNew())
                     this.createdDate.value = new Date()
             },
-            allowApiCRUD: context => context.isSignedIn(),
+            allowApiCRUD: Roles.canUpdateUsers,
             allowApiRead: context => context.isSignedIn()
         })
     }
@@ -31,6 +33,8 @@ export class Users extends IdEntity {
             name: u.name.value,
             roles: []
         };
+        if (u.isAdmin.value)
+            user.roles.push(Roles.canUpdateUsers);
         return authorization.createToken(user);
     }
 }

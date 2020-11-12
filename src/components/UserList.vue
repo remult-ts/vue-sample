@@ -3,6 +3,8 @@
     <h2>User List {{ users.length }}</h2>
     <div v-for="user in users" :key="user.id.value">
       <input v-model="user.name.value" />
+      <input v-model="user.isAdmin.value" type="checkbox"/>
+      admin |
       <button v-on:click="user.save()" v-if="user.wasChanged()">
         Save Changes
       </button>
