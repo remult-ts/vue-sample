@@ -8,7 +8,7 @@
     "node-serve": "./node_modules/.bin/tsc-watch -p tsconfig.server.json --onSuccess \"node dist-server/server/server.js"
   },
   "dependencies": {
-    "@remult/core": "^2.0.5",
+    "@remult/core": "^2.0.7",
     "@remult/server": "^2.0.5",
     "@remult/server-postgres": "^2.0.5",
     "@types/pg": "^7.14.6",

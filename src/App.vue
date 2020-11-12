@@ -3,8 +3,12 @@
     <h1>Remult with Vue</h1>
     <nav>
       <router-link to="/users">User List</router-link>
-      | <router-link to="/add-user">Add User</router-link>
-      | <router-link to="/sign-in">Sign In</router-link>
+      | <router-link to="/add-user">Add User</router-link> 
+      | <router-link to="/sign-in" v-if="!context.isSignedIn()">
+        Sign In
+      </router-link>
+      <span v-if="context.isSignedIn()"> Hello {{ context.user.name }} </span>
+      <button v-if="context.isSignedIn()" v-on:click="signOut">Sign Out</button>
     </nav>
     <div>
       <router-view />
@@ -14,16 +18,18 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import { authorization, context } from "./common";
+import router from "./router";
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
+@Component
 export default class App extends Vue {
-   async errorCaptured(err: any) {
+  context = context;
+  async errorCaptured(err: any) {
     alert(err.message);
+  }
+  signOut() {
+    authorization.signOut();
+    router.push({ path: "/sign-in" });
   }
 }
 </script>

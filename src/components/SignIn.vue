@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts">
+import { authorization, context } from "@/common";
 import router from "@/router";
 import { Users } from "@/users/users";
 import { Component, Vue } from "vue-property-decorator";
@@ -14,8 +15,10 @@ import { Component, Vue } from "vue-property-decorator";
 export default class SignIn extends Vue {
   name = "";
   async signIn() {
-    const user = await Users.signIn(this.name);
-    alert("Hello " + user.name);
+    const jwt = await Users.signIn(this.name);
+    authorization.afterSignIn(jwt, true);
+    alert("Hello " + context.user.name);
+    router.push({ path: "/users" });
   }
 }
 </script>

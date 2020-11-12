@@ -1,3 +1,4 @@
+import { authorization } from '../common';
 import { Context, DateTimeColumn, EntityClass, IdEntity, ServerFunction, StringColumn, UserInfo } from "@remult/core";
 
 @EntityClass
@@ -16,7 +17,8 @@ export class Users extends IdEntity {
                 if (this.isNew())
                     this.createdDate.value = new Date()
             },
-            allowApiCRUD: true
+            allowApiCRUD: context => context.isSignedIn(),
+            allowApiRead: context => context.isSignedIn()
         })
     }
     @ServerFunction({ allowed: true })
@@ -29,7 +31,7 @@ export class Users extends IdEntity {
             name: u.name.value,
             roles: []
         };
-        return user;
+        return authorization.createToken(user);
     }
 }
 
