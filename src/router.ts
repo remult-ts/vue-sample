@@ -12,6 +12,10 @@ const router = new VueRouter({
             component: () => import("./components/UserList.vue")
         },
         {
+            path: '/sign-in',
+            component: () => import("./components/SignIn.vue")
+        },
+        {
             path: '/add-user',
             component: () => import("./components/AddUser.vue")
         }

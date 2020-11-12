@@ -4,6 +4,7 @@
     <nav>
       <router-link to="/users">User List</router-link>
       | <router-link to="/add-user">Add User</router-link>
+      | <router-link to="/sign-in">Sign In</router-link>
     </nav>
     <div>
       <router-view />
