@@ -12,6 +12,9 @@ export class Users extends IdEntity {
     });
     createdDate = new DateTimeColumn();
     isAdmin = new BoolColumn();
+    password = new StringColumn({
+        includeInApi: false
+    })
     constructor() {
         super({
             name: 'users',

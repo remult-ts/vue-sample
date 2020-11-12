@@ -16,6 +16,10 @@ const router = new VueRouter({
             component: () => import("./components/SignIn.vue")
         },
         {
+            path: '/update-password',
+            component: () => import("./components/UpdatePassword.vue")
+        },
+        {
             path: '/add-user',
             component: () => import("./components/AddUser.vue")
         }

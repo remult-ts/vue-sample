@@ -8,6 +8,7 @@
         Sign In
       </router-link>
       <span v-if="context.isSignedIn()"> Hello {{ context.user.name }} </span>
+      | <router-link to="/update-password" v-if="context.isSignedIn()"> Update Password</router-link> |
       <button v-if="context.isSignedIn()" v-on:click="signOut">Sign Out</button>
     </nav>
     <div>

@@ -7,6 +7,7 @@ import { config } from 'dotenv';
 import { PostgresDataProvider, PostgresSchemaBuilder } from '@remult/server-postgres';
 import { authorization } from '../common';
 import '../users/users';
+import '../users/UpdatePasswordController';
 
 
 config(); //loads the configuration from the .env file
