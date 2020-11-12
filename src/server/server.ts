@@ -5,6 +5,7 @@ import { SqlDatabase } from '@remult/core';
 import { Pool } from 'pg';
 import { config } from 'dotenv';
 import { PostgresDataProvider, PostgresSchemaBuilder } from '@remult/server-postgres';
+import '../users/users';
 
 
 config(); //loads the configuration from the .env file

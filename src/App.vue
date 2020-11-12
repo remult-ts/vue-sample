@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <h1>Remult with Vue</h1>
-    <nav></nav>
+    <nav>
+      <router-link to="/users">User List</router-link>
+    </nav>
     <div>
       <router-view />
     </div>
@@ -17,7 +19,11 @@ import HelloWorld from "./components/HelloWorld.vue";
     HelloWorld,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+   async errorCaptured(err: any) {
+    alert(err.message);
+  }
+}
 </script>
 
 <style>
