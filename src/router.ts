@@ -10,6 +10,10 @@ const router = new VueRouter({
         {
             path: '/users',
             component: () => import("./components/UserList.vue")
+        },
+        {
+            path: '/add-user',
+            component: () => import("./components/AddUser.vue")
         }
     ]
 });

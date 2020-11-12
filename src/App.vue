@@ -3,6 +3,7 @@
     <h1>Remult with Vue</h1>
     <nav>
       <router-link to="/users">User List</router-link>
+      | <router-link to="/add-user">Add User</router-link>
     </nav>
     <div>
       <router-view />
