@@ -16,6 +16,7 @@
     "core-js": "^3.7.0",
     "express": "^4.17.1",
     "express-force-https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.0",
     "reflect-metadata": "^0.1.13",
     "tsc-watch": "^4.2.9",
